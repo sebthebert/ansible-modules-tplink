@@ -1,0 +1,28 @@
+- hosts: localhost
+  gather_facts: no
+
+  vars:
+    tplink_plug_ip: '192.168.0.7'
+    tplink_plug_port: 9999
+
+  tasks:
+
+    - name: Switch 'On' TP Link Plug
+      tplink_plug_switch:
+        ip: "{{ tplink_plug_ip }}"
+        port: "{{ tplink_plug_port }}"
+        state: 'on'
+
+    - name: Switch 'Off' TP Link Plug
+      tplink_plug_switch:
+        ip: "{{ tplink_plug_ip }}"
+        port: "{{ tplink_plug_port }}"
+        state: 'off'
+      # => 'changed'
+
+    - name: Switch 'Off' TP Link Plug
+      tplink_plug_switch:
+        ip: "{{ tplink_plug_ip }}"
+        port: "{{ tplink_plug_port }}"
+        state: 'off'
+      # => 'ok'
